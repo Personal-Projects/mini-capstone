@@ -1,19 +1,57 @@
 class ProductsController < ApplicationController
-  def product
-    @title = "Products"
+  def index
+    @title = "All Products"
     @products = Product.all
-    render "product.html.erb"
+    render "index.html.erb"
+  end
+  
+  def new
+    @title = "Make New Product"
+    render 'new.html.erb'
+  end
+
+  def create
+    @title = "Created Product!"
+    @product = Product.new(
+      name: params[:name], 
+      price: params[:price], 
+      description: params[:description]
+      )
+    @product.save
+    render 'create.html.erb'
   end
 
   def show
-    # show the user the form
-    render 'show.html.erb'
+    @title = "Specific Product"
+    url_id = params[:id]
+    @product = Product.find_by(id: url_id)
+    render "show.html.erb"
   end
 
-  def make
-    #that info is sent through params to another action/url
-    product4 = Product.new(name: params[:name], price: params[:price], description: params[:description])
-    render 'make_the_product.html.erb'
-    product4.save
+  def edit
+    @title = "Edit Product Form"
+    @product = Product.find_by(id: params[:id])
+    render 'edit.html.erb'
   end
+
+  def update
+    #get the correct recipe
+    #need the id
+    @title = "Updated!"
+    @product = Product.find_by(id: params[:id])
+    @product.update(
+      name: params[:name],
+      price: params[:price],
+      description: params[:description]
+    )
+    render 'update.html.erb'
+  end
+
+  def destroy
+    #write some code to delete the thing
+    product = Product.find_by(id: params[:id])
+    product.destroy
+    render 'destroy.html.erb'
+  end
+
 end

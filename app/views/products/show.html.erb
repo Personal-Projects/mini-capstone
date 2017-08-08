@@ -1,10 +1,11 @@
-Here's the product form
+This is your product:
 
-<%= form_tag "/make_the_product", method: :post do %>
+  <hr>
+  <p>Name: <%= @product.name %></p>
+  <p>Price: <%= @product.price %></p>
+  <p>Description: <%= @product.description %></p>
 
-<p>Name: <input type="text" name="name"></p>
-<p>Price: <input type="text" name="price"></p>
-<p>Description: <input type="text" name="description"></p>
-<p><input type="submit"></p>
 
+<%= form_tag "/products/#{@product.id}", method: :delete do %>
+  <input type="submit" value="Delete me!">
 <% end %>
