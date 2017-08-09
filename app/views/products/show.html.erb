@@ -1,7 +1,7 @@
-This is your product:
+This is your pokemon:
 
   <hr>
-  <p>Name: <%= @product.name %></p>
+  <h3>Name: <%= @product.name %></h3>
   <p>Price: <%= @product.price %></p>
   <p>Description: <%= @product.description %></p>
 
@@ -9,3 +9,5 @@ This is your product:
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
   <input type="submit" value="Delete me!">
 <% end %>
+
+<a href=""

@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
       description: params[:description]
       )
     product.save
+    flash[:success] = "You just created a new product"
     redirect_to "/products/#{product.id}"
   end
 
@@ -44,6 +45,7 @@ class ProductsController < ApplicationController
       price: params[:price],
       description: params[:description]
     )
+    flash[:info] = "You just updated the product"
     redirect_to "/products/#{product.id}"
   end
 
@@ -51,6 +53,8 @@ class ProductsController < ApplicationController
     #write some code to delete the thing
     product = Product.find_by(id: params[:id])
     product.destroy
+    flash[:danger] = "You just deleted the product"
+    flash[:info] = "You now have #{Product.count} products"
     redirect_to "/products/"
   end
 
