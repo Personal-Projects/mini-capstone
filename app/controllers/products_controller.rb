@@ -12,13 +12,13 @@ class ProductsController < ApplicationController
 
   def create
     @title = "Created Product!"
-    @product = Product.new(
+    product = Product.new(
       name: params[:name], 
       price: params[:price], 
       description: params[:description]
       )
-    @product.save
-    render 'create.html.erb'
+    product.save
+    redirect_to "/products/#{product.id}"
   end
 
   def show
@@ -38,20 +38,20 @@ class ProductsController < ApplicationController
     #get the correct recipe
     #need the id
     @title = "Updated!"
-    @product = Product.find_by(id: params[:id])
-    @product.update(
+    product = Product.find_by(id: params[:id])
+    product.update(
       name: params[:name],
       price: params[:price],
       description: params[:description]
     )
-    render 'update.html.erb'
+    redirect_to "/products/#{product.id}"
   end
 
   def destroy
     #write some code to delete the thing
     product = Product.find_by(id: params[:id])
     product.destroy
-    render 'destroy.html.erb'
+    redirect_to "/products/"
   end
 
 end
