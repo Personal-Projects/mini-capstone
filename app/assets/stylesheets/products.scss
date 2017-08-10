@@ -3,6 +3,43 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  font-family: Muli;
-  background-image: url('pikachu.jpeg');
+  font-family: Rockwell;
+  background-image: url("pikachu.jpeg");
 }
+
+p {
+  color: #F7D006;
+  font-size: large;
+}
+
+h1 {
+  text-align: center;
+  margin: 40px 0px 50px 0px;
+  font-family: Rockwell Extra Bold;
+}
+
+#indexWell {
+  width: 75%;
+  border-style: outset;
+  border-color: #FEFEFE #654343;
+  border-width: 10px;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-color: #CB3805;
+  }
+
+#showWell {
+  width: 70%;
+  border-style: outset;
+  border-color: #FEFEFE #654343;
+  border-width: 10px;
+  margin: 70px 0px 30px 150px;
+  padding: 25px 70px;
+  text-align: left;
+  background-size: cover;
+  background-position: center;
+  background-color: #CB3805;
+}
+
+

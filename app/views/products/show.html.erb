@@ -1,13 +1,15 @@
-This is your pokemon:
+<div id="showWell" class="well">
+  <h2 style="text-align:center;"><font color="white">Species:</font> <font color="#FDDEBD"> <%= @product.name %></font></h2>
+  <br>
+  <p><font color="white">Location:</font> <%= @product.location %></p> 
+  <p><font color="white">Move:</font> <%= @product.description %></p>       
+  <p><font color="white">Price:</font> <%= @product.price %> poké</p>
+  <p><font color="white">Tax:</font> <%= @product.tax %> poké</p>
+  <p><font color="#40FC65">Total cost:</font> <%= @product.total %> poké</p>
+  <p><font color="white">ID:</font> <%= @product.id %></p>
+  <br>
+  <%= form_tag "/products/#{@product.id}", method: :delete do %>
+    <p style="text-align:center;"> <input type="submit" value="Delete me!"></p>
+  <% end %>
 
-  <hr>
-  <h3>Name: <%= @product.name %></h3>
-  <p>Price: <%= @product.price %></p>
-  <p>Description: <%= @product.description %></p>
-
-
-<%= form_tag "/products/#{@product.id}", method: :delete do %>
-  <input type="submit" value="Delete me!">
-<% end %>
-
-<a href=""
+</div>
