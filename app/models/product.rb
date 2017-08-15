@@ -1,21 +1,17 @@
 class Product < ApplicationRecord
   def sale_message
-    if price < 2
-      p "Discount Item!"
+    if price < 45
+      return "Discount Item!"
     else
-      p "Everyday Value!"
+      return "Everyday Value!"
     end
   end
 
   def tax
-    '%.2f' % (price * 0.09)
+    return price.to_f * 0.09
   end
 
   def total
-    tax.to_i + price.to_i
-  end
-
-  def location
-    Faker::Pokemon.location
+    return tax.to_f + price.to_f
   end
 end

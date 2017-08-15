@@ -9,8 +9,8 @@
 100.times do
   Product.create(
     name: Faker::Pokemon.name,
+    location: Faker::Pokemon.location,
     price: Faker::Commerce.price,
     description: Faker::Pokemon.move
   )
-
 end
