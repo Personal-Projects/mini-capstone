@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
     if params[:sort_attribute] && params[:sort_order]
       @products = Product.order(params[:sort_attribute] => params[:sort_order])
     elsif params[:discount_item] && params[:discounted]
-      p "hello" * 100
       discounted_items = Product.where("price < ?", 45)
       @products = Product.discounted_items(:discounted_items => discounted)
     else
