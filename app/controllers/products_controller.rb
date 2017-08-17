@@ -1,12 +1,14 @@
 class ProductsController < ApplicationController
   def index
     @title = "Pokemon List"
-    if params[:sort_by]
-      @products = Product.order(:price => params[:sort_by])
+    if params[:sort_price]
+      @products = Product.order(:price => params[:sort_price])
+    elsif params[:sort_name]  
+      @products = Product.order(:name => params[:sort_name])
     elsif params[:price_category] == 'discounted'
-      @products = Product.where("price < ?", '20')
+      @products = Product.where("price < ?", '15')
     elsif params[:search_term]
-      @products = Product.where("name LIKE?", "%#{params[:search_term]}%")
+      @products = Product.where("name LIKE ?", "%#{params[:search_term]}%")
     else
       @products = Product.all
     end
@@ -20,20 +22,23 @@ class ProductsController < ApplicationController
 
   def create
     @title = "Creation Complete!"
-    product = Product.new(
-      name: params[:name], 
-      price: params[:price], 
+    @product = Product.create(
+      name: params[:name],
+      price: params[:price],
       description: params[:description]
-      )
-    product.save
+    )
     flash[:success] = "You just created a new pokemon!"
-    redirect_to "/products/#{product.id}"
+    redirect_to "/products/#{@product.id}"
   end
 
   def show
     @title = "Selected Pokemon"
     url_id = params[:id]
+    if params[:id] == 'random'
+      @product = Product.all.sample
+    else
     @product = Product.find_by(id: url_id)
+    end
     render "show.html.erb"
   end
 
@@ -47,14 +52,14 @@ class ProductsController < ApplicationController
     #get the correct recipe
     #need the id
     @title = "Update Complete!"
-    product = Product.find_by(id: params[:id])
-    product.update(
+    @product = Product.find_by(id: params[:id])
+    @product.update(
       name: params[:name],
       price: params[:price],
       description: params[:description]
     )
     flash[:info] = "You just updated the pokemon!"
-    redirect_to "/products/#{product.id}"
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy

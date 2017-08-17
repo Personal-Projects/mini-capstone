@@ -1,11 +1,23 @@
-<% @products.each_slice(3) do |three_products| %>
+<section>
   <div class="row">
-    <% three_products.each do |product| %>
-      <div class="col-md-4">
-        <div id="indexWell" class="well">
-          <h2> <a href="/products/<%= product.id %>"><font color="#FDDEBD"><%= product.name %></font></a></h2>
+
+  <h1>Gotta catch 'em all!</h1>
+    <% @products.each_slice(3) do |three_products| %>
+      
+      <% three_products.each do |product| %>
+        <div class="col-md-4">
+          <div id="indexWell" class="well">
+            <div class="product_single">
+              <h2> <a href="/products/<%= product.id %>"><font color="#02ADFD"><%= product.name %></font></a></h2>
+
+              <p><font color="white"><%= number_to_currency(product.price) %> poké</font></p>
+              <p class="<%= product.sale_item_class%>">(<%= product.sale_message %>)</p>
+
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
+
   </div>
-<% end %>
+</section>

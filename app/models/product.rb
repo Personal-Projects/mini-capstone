@@ -1,9 +1,25 @@
 class Product < ApplicationRecord
   def sale_message
-    if price < 45
+    if price < 15
       return "Discount Item!"
     else
-      return "Everyday Value!"
+      return "Regular Price"
+    end
+  end
+
+  def cheap?
+    if sale_message == "Discount Item!"
+      return true
+    else
+      return false
+    end
+  end
+
+  def sale_item_class
+    if sale_message == "Discount Item!"
+      return "discount-item"
+    else
+      return ""
     end
   end
 

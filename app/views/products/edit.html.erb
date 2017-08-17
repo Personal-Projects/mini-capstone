@@ -1,10 +1,23 @@
-<h3>Here you can edit your pokemon</h3>
+<div id="showWell" class="well">
 
-<%= form_tag "/products/#{@product.id}", method: :patch do %>
+<h1><font color="yellow">Update Page</font></h1>
 
-<p>Name: <input type="text" name="name" value="<%= @product.name %>"></p>
-<p>Price: <input type="text" name="price" value="<%= @product.price %>"></p>
-<p>Description: <input type="text" name="description" value="<%= @product.description %>"></p>
-<p><input type="submit" value="Updated!"></p>
+  <%= form_tag "/products/#{@product.id}", method: :patch do %>
+    <div>
+      <font color="black"><strong>Name:</strong>&emsp;<input type="text" name="name" value="<%= @product.name %>"></font>
+    </div>
+    <br>
+    <div>
+      <font color="black"><strong>Move:</strong>&emsp;<input type="text" name="description" value="<%= @product.description %>"></font>
+    </div>
+    <br>
+    <div>
+      <font color="black"><strong>Price:</strong>&emsp;<input type="text" name="price" value="<%= @product.price %>"></font>
+    </div>
 
-<% end %>
+    <br>
+    <br>
+    <p style="text-align:center;"> <font color="black"><input type="submit" value="Update Pokemon"></font></p>
+  <% end %>
+
+</div>

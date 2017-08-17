@@ -1,14 +1,13 @@
 <div id="showWell" class="well">
-  <h2 style="text-align:center;"><font color="white">Species:</font> <font color="#FDDEBD"> <%= @product.name %></font></h2>
+  <h2 style="text-align:center;"><font color="white">Species: </font><font color="#02ADFD"><%= @product.name %></font></h2>
   <br>
-  <p><font color="white">Move:</font> <%= @product.description %></p>       
-  <p><font color="white">Price:</font> <%= number_to_currency(@product.price) %> poké (<%= @product.sale_message%>)</p>
-  <p><font color="white">Tax:</font> <%= number_to_currency(@product.tax) %> poké</p>
-  <p><font color="#40FC65">Total cost:</font> <%= number_to_currency(@product.total) %> poké</p>
-  <p><font color="white">ID:</font> <%= @product.id %></p>
+  <div><font color="white">Move:</font> <%= @product.description %></div>       
+  <div><font color="white">Price:</font> <%= number_to_currency(@product.price) %> poké (<%= @product.sale_message%>)</div>
+  <div><font color="white">Tax:</font> <%= number_to_currency(@product.tax) %> poké</div>
+  <div><font color="#40FC65">Total cost:</font> <%= number_to_currency(@product.total) %> poké</div>
+  <div><font color="white">ID:</font> <%= @product.id %></div>
   <br>
-  <%= form_tag "/products/#{@product.id}", method: :delete do %>
-    <p style="text-align:center;"> <input type="submit" value="Delete me!"></p>
-  <% end %>
 
+  <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
+  <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
 </div>
