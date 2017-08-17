@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   def index
     @title = "Pokemon List"
-    if params[:sort_attribute] && params[:sort_order]
-      @products = Product.order(params[:sort_attribute] => params[:sort_order])
-    elsif params[:discount_item] && params[:discounted]
-      discounted_items = Product.where("price < ?", 45)
-      @products = Product.discounted_items(:discounted_items => discounted)
+    if params[:sort_by]
+      @products = Product.order(:price => params[:sort_by])
+    elsif params[:price_category] == 'discounted'
+      @products = Product.where("price < ?", '20')
+    elsif params[:search_term]
+      @products = Product.where("name LIKE?", "%#{params[:search_term]}%")
     else
       @products = Product.all
     end
