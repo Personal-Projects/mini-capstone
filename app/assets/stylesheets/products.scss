@@ -25,6 +25,15 @@ div {
   animation: rainbow 1s infinite; 
 }
 
+.img-responsive {
+  display: block;
+  margin: 0 auto;
+}
+
+.product_single_image {
+  background-color: black;
+}
+
 @-webkit-keyframes rainbow{
   20%{color: red;}
   40%{color: yellow;}
