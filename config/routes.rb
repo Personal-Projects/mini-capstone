@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
   #display a list of all products
   get '/products' => 'products#index'
   

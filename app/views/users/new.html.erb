@@ -1,0 +1,17 @@
+<h1>Signup!</h1>
+<%= form_tag '/users', method: :post do %>
+  <div>
+     <font color="black"><strong>Name:</strong>&emsp;<input type="text" name="name"></font>
+  </div>
+  <div>
+     <font color="black"><strong>Email:</strong>&emsp;<input type="text" name="email"></font>
+  </div>
+  <div>
+     <font color="black"><strong>Password:</strong>&emsp;<input type="password" name="password"></font>
+  </div>
+  <div>
+     <font color="black"><strong>Confirmation Password:</strong>&emsp;<input type="password" name="password_confirmation"></font>
+  </div>
+  <input type="submit" value="Submit">
+
+<% end %>

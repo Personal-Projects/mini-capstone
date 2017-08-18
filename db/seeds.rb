@@ -17,8 +17,7 @@
 
 # products = Product.all
 # products.each do |product|
-#   product.supplier_id = 1
-#   product.save
+#   product.update(supplier_id: rand(1...4))
 # end
 
 # products = Product.all

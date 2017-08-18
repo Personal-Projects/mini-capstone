@@ -1,11 +1,11 @@
 <div id="showWell" class="well">
   <h2 style="text-align:center;"><font color="white">Species: </font><font color="#02ADFD"><%= @product.name %></font></h2>
   <br>
-  <div><font color="white">Move:</font> <%= @product.description %></div>       
-  <div><font color="white">Price:</font> <%= number_to_currency(@product.price) %> poké (<%= @product.sale_message%>)</div>
-  <div><font color="white">Tax:</font> <%= number_to_currency(@product.tax) %> poké</div>
-  <div><font color="#40FC65">Total cost:</font> <%= number_to_currency(@product.total) %> poké</div>
-  <div><font color="white">Supplier:</font> <%= @product.supplier.name %></div>
+  <div><font color="white">Move:</font><%= @product.description %></div>       
+  <div><font color="white">Price:</font><%= number_to_currency(@product.price) %> poké (<%= @product.sale_message%>)</div>
+  <div><font color="white">Tax:</font><%= number_to_currency(@product.tax) %> poké</div>
+  <div><font color="#40FC65">Total cost:</font><%= number_to_currency(@product.total) %> poké</div>
+  <div><font color="white">Supplier:</font><%= @product.supplier.name %></div>
   <div><font color="white">ID:</font> <%= @product.id %></div>
 
   <%@product.images.each do |image| %>

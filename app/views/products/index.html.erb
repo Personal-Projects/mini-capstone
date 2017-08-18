@@ -1,7 +1,9 @@
-<section>
-  <div class="row">
+<font color="black"><%= current_user.name.capitalize %></font>
 
-  <h1>Gotta catch 'em all!</h1>
+<section>
+  <font color="black"><%= session[:page_count] %></font>
+  <div class="row">
+    <h1>Gotta catch 'em all!</h1>
     <% @products.each_slice(3) do |three_products| %>
       
       <% three_products.each do |product| %>
