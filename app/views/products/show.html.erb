@@ -17,3 +17,13 @@
   <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
   <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
 </div>
+
+<%= form_tag '/orders', method: :post do %>
+  <p><font color="black"><strong>Quantity: </strong>&emsp;<input type="text" name="quantity" value="0"></font></p>
+  <p><font color="black"><strong>Product Id: </strong>&emsp;<%= @product.id %></font></p>
+  <p><font color="black"><strong>Subtotal: </strong>&emsp;<%= @subtotal %></font>
+  <p><font color="black"><strong>Tax: </strong>&emsp;<%= @tax %></font>
+  <p><font color="black"><strong>Total: </strong>&emsp;<%= @total %></font>
+  <p><font color="black"><input type="submit" value="Buy Now!"></font></p>
+<% end %>
+

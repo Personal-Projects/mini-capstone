@@ -29,13 +29,13 @@
       <% if current_user %>
         <% current_user.name %>
         <li class="active"><a href="http://localhost:3000/logout">Logout <span class="sr-only">(current)</span></a></li>
+        <li><a href="http://localhost:3000/products/new">Generate a Pokemon!</a></li>
       <% else %>
         <li class="active"><a href="http://localhost:3000/signup">Register <span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="http://localhost:3000/login">Login <span class="sr-only">(current)</span></a></li>
       <% end %>  
-        <li><a href="http://localhost:3000/products/new">Generate a Pokemon!</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">sort by<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort by<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="http://localhost:3000/products?sort_name=asc">Name A to Z</a></li>
             <li><a href="http://localhost:3000/products?sort_name=desc">Name Z to A</a></li>
@@ -43,21 +43,14 @@
             <li><a href="http://localhost:3000/products?sort_price=desc">Price high to low</a></li>
             <li><a href="http://localhost:3000/products?price_category=discounted">Discounted Pokemons</a></li>
             <li><a href="http://localhost:3000/products/random">Randomize!</a></li>
+            <li><a href="#">Category</a></li>
           </ul>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="https://github.com/stympy/faker">Faker</a></li>
-            <li><a href="http://sass-lang.com/guide">SASS</a></li>
-            <li><a href="http://getbootstrap.com/components/">Bootstrap</a></li>
-            <li><a href="http://www.cssfontstack.com/">CSS Font Stack</a></li>
-            <li><a href="https://fonts.google.com/">Google Fonts</a></li>
-            <li><a href="http://htmlcolorcodes.com/">HTML Color Codes</a></li>
-            <li><a href="https://www.w3schools.com/html/">W3 School</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="https://projecteuler.net/">Project Euler</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="https://codefights.com/">CodeFights</a></li>
+            <% Category.all.each do |category| %>
+            <li><a href="/products?category=<%= category.name %>"><%= category.name.capitalize %></a></li>
+            <% end %>
           </ul>
         </li>
         </li>
