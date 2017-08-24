@@ -1,9 +1,9 @@
 class Product < ApplicationRecord
   belongs_to :supplier
   has_many :images
-  has_many :orders
   has_many :category_products
-  has_many :categories, through: :category_products
+  has_many :categories, through: :category_product #do we need this?
+  has_many :carted_products
 
   def sale_message
     if price < 15
