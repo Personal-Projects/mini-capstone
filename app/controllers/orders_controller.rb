@@ -1,9 +1,6 @@
 class OrdersController < ApplicationController
   def show
-    @order = Order.find_by(id: params[:id])
-    @order_id = @order.id
-    @order_products = CartedProduct.where(order_id: @order.id)
-    p @order_products
+    @order_products = CartedProduct.where(order_id: params[:id])
     render "show.html.erb"
   end
 
@@ -14,6 +11,7 @@ class OrdersController < ApplicationController
       subtotal = carted_product.product.price * carted_product.quantity
     end
     order = Order.new(
+      user_id: current_user.id,
       subtotal: subtotal,
       tax:  subtotal * 0.09,
       total: subtotal * 1.09
@@ -46,9 +44,4 @@ class OrdersController < ApplicationController
   #   redirect_to "/orders/#{order1.id}"
   # end
 
-  def show
-    @order = Order.find_by(id: params[:id])
-    p @order
-    render 'show.html.erb'
-  end
 end

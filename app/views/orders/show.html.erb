@@ -1,5 +1,9 @@
-<font color="black"><h2>You bought it!</h2></font>
+<h2>You bought it!</h2>
 
-<p><font color="black">Products: <%= %></font></p>
-<p><font color="black">Quantity: </font></p>
+<% @order_products.each do |ordered_product| %>
+  <%= ordered_product.product.name %>
+  <%= ordered_product.quantity %>
+  
+<% end %>
+
 

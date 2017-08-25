@@ -30,6 +30,11 @@
         <% current_user.name %>
         <li class="active"><a href="http://localhost:3000/logout">Logout <span class="sr-only">(current)</span></a></li>
         <li><a href="http://localhost:3000/products/new">Generate a Pokemon!</a></li>
+        <% if CartedProduct.where(user_id: current_user).where(status: "carted")[0] %>
+          <li><a href="http://localhost:3000/carted_products">Checkout</a></li>
+        <% else %>
+          <li><a href="http://localhost:3000/products">Checkout</a></li>
+        <% end %>
       <% else %>
         <li class="active"><a href="http://localhost:3000/signup">Register <span class="sr-only">(current)</span></a></li>
         <li class="active"><a href="http://localhost:3000/login">Login <span class="sr-only">(current)</span></a></li>

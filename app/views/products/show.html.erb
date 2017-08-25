@@ -20,8 +20,8 @@
 
 <%= form_tag '/carted_products', method: :post do %>
   <p><font color="black"><strong>Quantity: </strong>&emsp;<input type="text" name="input_quantity" value="0"></font></p>
-  <p><font color="black"><strong>Product Id: </strong>&emsp;<input type="text" value="<%= @product.id %>" name="input_product_id"></font></p>
-
+  <input type="hidden" value="<%= @product.id %>" name="input_product_id">
+  <br>
   <p><font color="black"><input type="submit" value="Add To Cart"></font></p>
 <% end %>
 

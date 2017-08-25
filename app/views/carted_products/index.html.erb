@@ -1,12 +1,11 @@
-<p><font color="black">Checkout Screen!</font></p>
-<p><font color="black">Carted products of current user</font></p>
-<p><font color="black">Carted products with status of 'carted'</font></p>
+<p><font color="black">Checkout Page!</font></p>
 
-<% CartedProduct.where(user_id: current_user.id).where(status: "carted").each do |carted_product| %>
+
+<% @carted_products.each do |carted_product| %>
   <p><font color="black"><%= carted_product.product.name %></font></p>
   <p><font color="black"><%= carted_product.quantity %></font></p>
+  <%= link_to "Delete", "/carted_products/#{carted_product.id}", {method: :delete, class: "btn btn-danger" } %>
 <% end %>
 
-<%= form_tag '/orders', method: :post do %>
-  <p><font color="black"><input type="submit" value="Buy Now!"></font></p>
-<% end %>
+<p><font color="black"><%= button_to "Buy Now", "/orders", method: :post %></font></p>
+
