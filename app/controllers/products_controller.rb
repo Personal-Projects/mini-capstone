@@ -43,9 +43,14 @@ class ProductsController < ApplicationController
     if params[:id] == 'random'
       @product = Product.all.sample
     else
-    @product = Product.find_by(id: url_id)
+      @product = Product.find_by(id: url_id)
     end
     render "show.html.erb"
+    product_quantity = Product.where(quantity: params[:input_quantity])
+    # if product_quantity == 0
+    #   flash[:danger] = "Please enter a value greater than 0."
+    #   redirect_to "show.html.erb"
+    # end
   end
 
   def edit
@@ -64,7 +69,7 @@ class ProductsController < ApplicationController
       price: params[:price],
       description: params[:description]
     )
-    flash[:info] = "You just updated the pokemon!"
+    flash[:success] = "You just updated the pokemon!"
     redirect_to "/products/#{@product.id}"
   end
 

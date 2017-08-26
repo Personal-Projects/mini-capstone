@@ -1,23 +1,24 @@
 <div id="showWell" class="well">
 
-  <h1><font color="yellow">Create a new Pokemon</font></h1>
+  <h2>Create a new Pokemon</h2>
 
   <%= form_tag "/products", method: :post do %>
     <div>
-      <font color="black"><strong>Name:</strong>&emsp;<input type="text" name="name"></font>
+      <%= label_tag :name %>
+      <%= text_field_tag :name %>
     </div>
     <br>
     <div>
-      <font color="black"><strong>Move:</strong>&emsp;<input type="text" name="description"></font>
+      <%= label_tag :move %>
+      <%= text_field_tag :description %>
     </div>
     <br>
     <div>
-      <font color="black"><strong>Price:</strong>&emsp;<input type="text" name="price"></font>
+      <%= label_tag :price %>
+      <%= text_field_tag :price %>
     </div>
-
     <br>
-    <br>
-    <p style="text-align:center;"><font color="black"><input type="submit" value="Create!"></font></p>
+    <p><%= submit_tag "Create A Pokemon" %></p>
 
   <% end %>
 

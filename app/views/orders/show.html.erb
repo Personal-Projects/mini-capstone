@@ -1,9 +1,9 @@
-<h2>You bought it!</h2>
+<h2>Purchase Confirmation Page</h2>
 
-<% @order_products.each do |ordered_product| %>
-  <%= ordered_product.product.name %>
-  <%= ordered_product.quantity %>
-  
-<% end %>
-
-
+<div id="showWell" class="well">
+  <h4>YOU SUCCESSFULLY PURCHASED:</h4>
+  <br>
+    <% @order_products.each do |ordered_product| %>
+     <h4><%= ordered_product.quantity %> <%= ordered_product.product.name %></h4>
+    <% end %>
+</div>

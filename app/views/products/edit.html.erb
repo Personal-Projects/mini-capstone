@@ -1,23 +1,24 @@
-<div id="showWell" class="well">
+<h2>Update Page</h2>
 
-<h1><font color="yellow">Update Page</font></h1>
+<div id="showWell" class="well">
 
   <%= form_tag "/products/#{@product.id}", method: :patch do %>
     <div>
-      <font color="black"><strong>Name:</strong>&emsp;<input type="text" name="name" value="<%= @product.name %>"></font>
+      <%= label_tag :name %>
+      <%= text_field_tag :name, @product.name %>
     </div>
     <br>
     <div>
-      <font color="black"><strong>Move:</strong>&emsp;<input type="text" name="description" value="<%= @product.description %>"></font>
+      <%= label_tag :move %>
+      <%= text_field_tag :move, @product.description %>
     </div>
     <br>
     <div>
-      <font color="black"><strong>Price:</strong>&emsp;<input type="text" name="price" value="<%= @product.price %>"></font>
+      <%= label_tag :price %>
+      <%= text_field_tag :price, @product.price %>
     </div>
-
     <br>
-    <br>
-    <p style="text-align:center;"><font color="black"><input type="submit" value="Update Pokemon"></font></p>
+    <p><%= submit_tag "Update Pokemon" %></p>
   <% end %>
 
 </div>

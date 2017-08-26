@@ -1,10 +1,19 @@
-<h1>Login</h1>
-<%= form_tag "/login", method: :post do %>
-  <div>
-    <font color="black"><strong>Email: </strong>&emsp;<input type="email" name="email"></font>
-  </div>
-  <div>
-    <font color="black"><strong>Password: </strong>&emsp;<input type="password" name="password"></font>
-  </div>
-  <input type="submit" value="Log In">
-<% end %>
+<div id="showWell" class="well">
+
+  <h2>Login</h2>
+
+  <%= form_tag "/login", method: :post do %>
+    <div>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
+    </div>
+    <br>
+    <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    </div>
+    <br>
+    <p><%= submit_tag "Log In" %></p>
+  <% end %>
+
+</div>

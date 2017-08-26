@@ -22,7 +22,6 @@ class CartedProductsController < ApplicationController
       )
       carted_product.save
     # end
-
     redirect_to '/carted_products'
   end
 
@@ -32,6 +31,7 @@ class CartedProductsController < ApplicationController
     )
     if CartedProduct.where(user_id: current_user).find_by(status: "carted")
       redirect_to '/carted_products'
+      flash[:danger] = "You just removed an item from your cart!"
     else
       redirect_to '/products'
     end

@@ -1,26 +1,20 @@
-
+<h1>Gotta catch 'em all!</h1>
 
 <section>
-  <font color="black"><%= session[:page_count] %></font>
   <div class="row">
-    <h1>Gotta catch 'em all!</h1>
     <% @products.each_slice(3) do |three_products| %>
-      
       <% three_products.each do |product| %>
         <div class="col-md-4">
           <div id="indexWell" class="well">
             <div class="product_single">
-              <h2> <a href="/products/<%= product.id %>"><font color="#02ADFD"><%= product.name %></font></a></h2>
-
-              <p><font color="white"><%= number_to_currency(product.price) %> poké</font></p>
+              <h3><a href="/products/<%= product.id %>"><%= product.name %></a></h3>
+              <h4><%= number_to_currency(product.price) %> poké</h4>
               <p class="<%= product.sale_item_class%>">(<%= product.sale_message %>)</p>
               <a href="/products/<%= product.id %>" title="View Product"><img src="<%= product.images[0].url %>" alt="<%= product.name %>" class="img-responsive product_single_image"></a>
-
             </div>
           </div>
         </div>
       <% end %>
     <% end %>
-
   </div>
 </section>

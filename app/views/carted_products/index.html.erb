@@ -1,11 +1,14 @@
-<p><font color="black">Checkout Page!</font></p>
+<h2>Checkout Page</h2>
 
+<div id="showWell" class="well">
+<h4>ALL ITEMS IN CART</h4>
+    <% @carted_products.each do |carted_product| %>
+      <br>
+      <h4>Name: <%= carted_product.product.name %> | Quantity: <%= carted_product.quantity %>&emsp;
+      <%= link_to "Delete", "/carted_products/#{carted_product.id}", {method: :delete, class: "btn btn-warning" } %>
+      </h4>
+      <br>
+    <% end %>
+  <p><%= button_to "Buy Now", "/orders", method: :post %></p>
 
-<% @carted_products.each do |carted_product| %>
-  <p><font color="black"><%= carted_product.product.name %></font></p>
-  <p><font color="black"><%= carted_product.quantity %></font></p>
-  <%= link_to "Delete", "/carted_products/#{carted_product.id}", {method: :delete, class: "btn btn-danger" } %>
-<% end %>
-
-<p><font color="black"><%= button_to "Buy Now", "/orders", method: :post %></font></p>
-
+</div>

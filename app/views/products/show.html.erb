@@ -1,27 +1,27 @@
 <div id="showWell" class="well">
-  <h2 style="text-align:center;"><font color="white">Species: </font><font color="#02ADFD"><%= @product.name %></font></h2>
-  <br>
-  <div><font color="white">Move:</font><%= @product.description %></div>       
-  <div><font color="white">Price:</font><%= number_to_currency(@product.price) %> poké (<%= @product.sale_message%>)</div>
-  <div><font color="white">Tax:</font><%= number_to_currency(@product.tax) %> poké</div>
-  <div><font color="#40FC65">Total cost:</font><%= number_to_currency(@product.total) %> poké</div>
-  <div><font color="white">Supplier:</font><%= @product.supplier.name %></div>
-  <div><font color="white">ID:</font> <%= @product.id %></div>
-
+  <h2><%= @product.name %></h2>
+  <ul>
+    <li>Move: <%= @product.description %></li>
+    <li>Price: <%= number_to_currency(@product.price) %> poké (<%= @product.sale_message%>)</li>
+    <li>Tax: <%= number_to_currency(@product.tax) %> poké</li>
+    <li>Total cost: <%= number_to_currency(@product.total) %> poké</li>
+    <li>Supplier: <%= @product.supplier.name %></li>
+    <li>ID: <%= @product.id %></li>
+  </ul>
   <%@product.images.each do |image| %>
     <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
   <% end %>
-
   <br>
-
   <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
   <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+  <%= form_tag '/carted_products', method: :post do %>
+    <br>
+    <p><%= label_tag :quantity %></p>
+    <p><%= text_field_tag :input_quantity, 0 %></p>
+    <br>
+    <p><%= hidden_field_tag :input_product_id, @product.id %></p>
+    <br>
+    <p><%= submit_tag "Add To Cart!" %></p>
+  <% end %>
+
 </div>
-
-<%= form_tag '/carted_products', method: :post do %>
-  <p><font color="black"><strong>Quantity: </strong>&emsp;<input type="text" name="input_quantity" value="0"></font></p>
-  <input type="hidden" value="<%= @product.id %>" name="input_product_id">
-  <br>
-  <p><font color="black"><input type="submit" value="Add To Cart"></font></p>
-<% end %>
-

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     )
     if user.save
       session[:user_id] = user.id
-      flash[:session] = 'Successfully created account!'
+      flash[:success] = 'Successfully created account!'
       redirect_to '/login'
     else
       flash[:warning] = 'Invalid email or password!'
