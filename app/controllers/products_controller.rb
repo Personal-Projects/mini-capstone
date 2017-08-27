@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
+
   def index
     @title = "Pokemon List"
     # if params[:sort_price]
     #   @products = Product.order(:price => params[:sort_price])
-    # elsif params[:sort_name]  
+    # elsif params[:sort_name]
     #   @products = Product.order(:name => params[:sort_name])
     # elsif params[:price_category] == 'discounted'
     #   @products = Product.where("price < ?", '15')
@@ -23,18 +25,24 @@ class ProductsController < ApplicationController
   
   def new
     @title = "Create Pokemon"
+    @product = Product.new
     render 'new.html.erb'
   end
 
   def create
     @title = "Creation Complete!"
-    @product = Product.create(
+    @product = Product.new(
       name: params[:name],
       price: params[:price],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: params[:supplier_id]
     )
-    flash[:success] = "You just created a new pokemon!"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "You just created a new pokemon!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render "new.html.erb"
+    end
   end
 
   def show
@@ -64,13 +72,17 @@ class ProductsController < ApplicationController
     #need the id
     @title = "Update Complete!"
     @product = Product.find_by(id: params[:id])
-    @product.update(
+    @product.assign_attributes(
       name: params[:name],
       price: params[:price],
       description: params[:description]
     )
-    flash[:success] = "You just updated the pokemon!"
-    redirect_to "/products/#{@product.id}"
+    if @product.save
+      flash[:success] = "You just updated the pokemon!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render "edit.html.erb"
+    end
   end
 
   def destroy
@@ -79,7 +91,6 @@ class ProductsController < ApplicationController
     product.destroy
     flash[:danger] = "You just deleted the pokemon!"
     flash[:info] = "You now have #{Product.count} pokemons left in your collection."
-    redirect_to "/products/"
+    redirect_to "/products"
   end
-
 end

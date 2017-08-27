@@ -12,16 +12,20 @@
     <img src="<%= image.url %>" alt="<%= @product.name %>" class="img-responsive">
   <% end %>
   <br>
-  <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
-  <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
-  <%= form_tag '/carted_products', method: :post do %>
-    <br>
-    <p><%= label_tag :quantity %></p>
-    <p><%= text_field_tag :input_quantity, 0 %></p>
-    <br>
-    <p><%= hidden_field_tag :input_product_id, @product.id %></p>
-    <br>
-    <p><%= submit_tag "Add To Cart!" %></p>
+  <% if current_user && current_user.admin %>
+    <%= link_to "Edit", "/products/#{@product.id}/edit", class: "btn btn-success" %>
+    <%= link_to "Delete", "/products/#{@product.id}", {method: :delete, class: "btn btn-danger" }%>
+  <% end %>
+  <% if current_user %>
+    <%= form_tag '/carted_products', method: :post do %>
+      <br>
+      <p><%= label_tag :quantity %></p>
+      <p><%= text_field_tag :input_quantity, 0 %></p>
+      <br>
+      <p><%= hidden_field_tag :input_product_id, @product.id %></p>
+      <br>
+      <p><%= submit_tag "Add To Cart!" %></p>
+    <% end %>
   <% end %>
 
 </div>

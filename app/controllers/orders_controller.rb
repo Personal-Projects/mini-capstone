@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @order_products = CartedProduct.where(order_id: params[:id])
     render "show.html.erb"
