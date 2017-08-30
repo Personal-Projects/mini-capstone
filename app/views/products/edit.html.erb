@@ -1,6 +1,5 @@
-<h2>Update Page</h2>
-
 <div id="showWell" class="well">
+<h2>Update Page</h2>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -25,6 +24,11 @@
     <div>
       <%= label_tag :price %>
       <%= text_field_tag :price, @product.price %>
+    </div>
+    <br>
+    <div>
+      <%= label_tag :supplier_id %>
+      <%= text_field_tag :supplier_id, @product.supplier_id %>
     </div>
     <br>
     <p><%= submit_tag "Update Pokemon" %></p>
